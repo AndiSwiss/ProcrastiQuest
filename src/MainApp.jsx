@@ -1,23 +1,26 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import { Button, Divider } from 'react-native-paper';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App() {
-  const insets = useSafeAreaInsets();
-
+function HomeScreen() {
   return (
-      <View style={{ flex: 1, paddingTop: insets.top }}>
-        <Divider />
-        <Text>Open up App.js to start working on your app!</Text>
-        <Divider />
-        <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-          Press me
-        </Button>
-        <Divider />
-        {/* eslint-disable-next-line react/style-prop-object */}
-        <StatusBar style="auto" />
-      </View>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
   );
 }
+
+const Stack = createNativeStackNavigator();
+
+function MainApp() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default MainApp;
