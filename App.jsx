@@ -9,6 +9,7 @@ import { navigationTheme, theme } from './src/theme/theme';
 import HomeScreen from './src/screens/HomeScreen';
 import DetailsScreen from './src/screens/DetailsScreen';
 import SubDetailsScreen from './src/screens/SubDetailsScreen';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,10 +29,29 @@ function DetailsStack() {
 }
 
 export default function Main() {
+
   return (
     <PaperProvider theme={theme}>
       <NavigationContainer theme={LightTheme}>
-        <Tab.Navigator initialRouteName="Home">
+        <Tab.Navigator
+          initialRouteName="Home"
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+              if (route.name === 'Home') {
+                iconName = focused
+                  ? 'ios-information-circle'
+                  : 'ios-information-circle-outline';
+              } else if (route.name === 'DetailsStack') {
+                iconName = focused ? 'ios-list' : 'ios-list-outline';
+              }
+              // You can return any component that you like here!
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: theme.colors.primary,
+            tabBarInactiveTintColor: theme.colors.scrim,
+          })}
+        >
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="DetailsStack" component={DetailsStack} />
         </Tab.Navigator>
