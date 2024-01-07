@@ -48,6 +48,10 @@ After starting the project, you can run the app on:
 - **Simulator/Emulator**: Open it via the Expo Developer Tools in your browser.
 - **Real Device**: Scan the QR code in the Expo Developer Tools with the Expo Go app.
 
+### Customizing
+
+The color scheme was created with the help of https://callstack.github.io/react-native-paper/docs/guides/theming.
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
